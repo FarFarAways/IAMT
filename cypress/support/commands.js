@@ -23,3 +23,26 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+let LOCAL_STORAGE_MEMORY = {};
+
+export const generate_random_string = string_length => {
+  let random_string = '';
+  let random_ascii;
+  for (let i = 0; i < string_length; i++) {
+    random_ascii = Math.floor(Math.random() * 25 + 97);
+    random_string += String.fromCharCode(random_ascii);
+  }
+  return random_string;
+};
+
+Cypress.Commands.add('saveLocalStorage', () => {
+  Object.keys(localStorage).forEach(key => {
+    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+  });
+});
+
+Cypress.Commands.add('restoreLocalStorage', () => {
+  Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
+});
