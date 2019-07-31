@@ -11,8 +11,7 @@ describe("Delete Brand", () => {
         );
     });
     it("Typing Username", () => {
-        // cy.get('.user-info > .fa').click();
-        // cy.get('.user-info-wrapper > div > a').click()
+        
         cy.get('[type="text"]').type('user1')
             .should('have.value', 'user1');
     });

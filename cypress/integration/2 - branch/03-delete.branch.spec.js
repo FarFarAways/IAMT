@@ -1,5 +1,5 @@
 import { generate_random_string } from '../../support/commands.js';
-describe("Edit Promotion", () => {
+describe("Delete Branch", () => {
     beforeEach(() => {
         cy.restoreLocalStorage();
       });
@@ -12,8 +12,7 @@ describe("Edit Promotion", () => {
         );
     });
     it("Typing Username", () => {
-        // cy.get('.user-info > .fa').click();
-        // cy.get('.user-info-wrapper > div > a').click()
+       
         cy.get('[type="text"]').type('user1')
             .should('have.value', 'user1');
     });
@@ -34,26 +33,32 @@ describe("Edit Promotion", () => {
        
     // });
     it("Click Brand", () => {
-        cy.wait(2000)
+        
         cy.get('.sc-ifAKCX > :nth-child(2) > :nth-child(1)').click()
     });
     it("Check Page Promotions", () => {
-        cy.get('h1').contains("Promotions")
+        cy.get('h2').contains("Promotions")
     });
-    // it("Search Brand", () => {
+    // it("Search Promotion", () => {
        
     // });
-    it("Click Edit Promotion", () => {
-        cy.get(':nth-child(1) > .card-body > .row > .sc-eNQAEJ > .hiddenLink').click()
+    it("Click Promotion", () => {
+        cy.get('.sc-ifAKCX > :nth-child(2) > :nth-child(1)').click()
+    });
+    // it("Search Branch", () => {
+       
+    // });
+    it("Click Edit Branch", () => {
+        cy.get('.hiddenLink').contains('Edit').click()
     });
     it("Click Delete", () => {
         cy.get('.form-delete > div').contains('Delete').click()
     });
-    it(" Click Submit", () => {
-       
-        cy.get('.sc-VigVT > :nth-child(1)').contains('ยืนยัน').click()
+    it("Typing YES and Click Submit", () => {
+        cy.get('.sc-jTzLTM').type('YES');
+        cy.get('.sc-VigVT > :nth-child(2)').contains('ยืนยัน').click()
     });
-    // it("Check Edit Brand By Search", () => {
+    // it("Check Edit Branch By Search", () => {
         
     // });
 });

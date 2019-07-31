@@ -18,6 +18,9 @@ describe("Login", () => {
       it("Login", () => {
         cy.get('#SignInButt').contains("เข้าสู่ระบบ").click()
       });
+      it("Notification", () => {
+        cy.get('.Toastify__toast-body').contains("login success")
+      });
     });
 
     context("login with invalid user", () => {
@@ -38,6 +41,9 @@ describe("Login", () => {
         });
         it("Login", () => {
           cy.get('#SignInButt').contains("เข้าสู่ระบบ").click()
+        });
+        it("Notification", () => {
+          cy.get('.Toastify__toast-body').contains("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
         });
       });
   });

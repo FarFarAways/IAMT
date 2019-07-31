@@ -1,28 +1,4 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+const graphQLEndpoint = "https://intern.pxmer.com/graphql"
 let LOCAL_STORAGE_MEMORY = {};
 
 export const generate_random_string = string_length => {
@@ -45,4 +21,24 @@ Cypress.Commands.add('restoreLocalStorage', () => {
   Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
     localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
   });
+});
+Cypress.Commands.add('waitForApi', () => {
+  cy.server()
+    .route('POST', graphQLEndpoint) 
+    .as('graphqlData');
+  cy.wait('@graphqlData')
+    .its('status')
+    .should('be', 200);
+});
+
+Cypress.Commands.add('watchApi', () => {
+  cy.server()
+    .route('POST', graphQLEndpoint)
+    .as('graphqlData');
+});
+
+Cypress.Commands.add('waitApi', () => {
+  cy.wait('@graphqlData')
+    .its('status')
+    .should('be', 200);
 });

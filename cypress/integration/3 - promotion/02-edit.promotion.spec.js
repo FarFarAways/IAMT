@@ -1,10 +1,10 @@
 import { generate_random_string } from '../../support/commands.js';
-describe("Delete Branch", () => {
+describe("Edit Promotion", () => {
     beforeEach(() => {
         cy.restoreLocalStorage();
       });
       afterEach(() => {
-        cy.saveLocalStorage();
+        cy.saveLocalStorage(); 
       });
     it("Go to login page", () => {
         cy.visit(
@@ -12,8 +12,7 @@ describe("Delete Branch", () => {
         );
     });
     it("Typing Username", () => {
-        // cy.get('.user-info > .fa').click();
-        // cy.get('.user-info-wrapper > div > a').click()
+        
         cy.get('[type="text"]').type('user1')
             .should('have.value', 'user1');
     });
@@ -34,32 +33,26 @@ describe("Delete Branch", () => {
        
     // });
     it("Click Brand", () => {
-        cy.wait(2000)
+        
         cy.get('.sc-ifAKCX > :nth-child(2) > :nth-child(1)').click()
     });
     it("Check Page Promotions", () => {
-        cy.get('h1').contains("Promotions")
+        cy.get('h2').contains("Promotions")
     });
-    // it("Search Promotion", () => {
+    // it("Search Brand", () => {
        
     // });
-    it("Click Promotion", () => {
-        cy.get('.sc-ifAKCX > :nth-child(2) > :nth-child(1)').click()
+    it("Click Edit Promotion", () => {
+        cy.get('.hiddenLink').click()
     });
-    // it("Search Branch", () => {
-       
-    // });
-    it("Click Edit Branch", () => {
-        cy.get('.hiddenLink').contains('Edit').click()
+    it("Edit Description", () => {
+        var random_string = generate_random_string(4);
+        cy.get(':nth-child(2) > .col-8 > .w-100').clear().type(random_string)
     });
-    it("Click Delete", () => {
-        cy.get('.form-delete > div').contains('Delete').click()
+    it("Click Submit", () => {
+        cy.get('.form-submit > div').contains("แก้ไข").click()
     });
-    it("Typing YES and Click Submit", () => {
-        cy.get('.sc-jTzLTM').type('YES');
-        cy.get('.sc-VigVT > :nth-child(2)').contains('ยืนยัน').click()
-    });
-    // it("Check Edit Branch By Search", () => {
+    // it("Check Edit Brand By Search", () => {
         
     // });
 });

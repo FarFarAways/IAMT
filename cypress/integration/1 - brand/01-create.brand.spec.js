@@ -1,7 +1,10 @@
 describe("Create Brand", () => {
+    
     beforeEach(() => {
+        cy.watchApi();
         cy.restoreLocalStorage();
       });
+      
       afterEach(() => {
         cy.saveLocalStorage();
       });
@@ -11,8 +14,7 @@ describe("Create Brand", () => {
             );
         });
         it("Typing Username", () => {
-            // cy.get('.user-info > .fa').click();
-            // cy.get('.user-info-wrapper > div > a').click()
+            
             cy.get('[type="text"]').type('user1')
                 .should('have.value', 'user1');
         });
@@ -25,7 +27,7 @@ describe("Create Brand", () => {
             
         });
         it("Click Brand Menu", () => {
-            cy.wait(2000);
+            
             cy.get(':nth-child(3) > .sc-bxivhb').contains("แบรนด์").click()
             
         });
@@ -49,7 +51,7 @@ describe("Create Brand", () => {
                 .should('have.value', 'Hakuna Matatayoung');
         });
         it("Click Create", () => {
-            cy.wait(2000);
+            
             cy.get('.form-submit > div').contains("เพิ่ม").click({force:true})
         });
         // it("Check Create Brand By Search", () => {
