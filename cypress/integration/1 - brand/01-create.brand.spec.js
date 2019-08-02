@@ -39,8 +39,8 @@ describe("Create Brand", () => {
         });
         it("Typing Title Name Brand", () => {
 
-            cy.get(':nth-child(1) > .col-8 > .w-100').type('IA')
-                .should('have.value', 'IA');
+            cy.get(':nth-child(1) > .col-8 > .w-100').type('IAM')
+                .should('have.value', 'IAM');
         });
         // it("Add Cover Image", () => {
 

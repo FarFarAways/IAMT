@@ -45,8 +45,8 @@ describe("Create Promotion", () => {
 
     // });
     it("Typing Title Name Promotion", () => {
-       
-        cy.get(':nth-child(1) > .col-8 > .w-100').type('PromotionTestIAMs')
+       cy.wait(2000)
+        cy.get(':nth-child(1) > .col-8 > .w-100').type('TESTPROMOTION')
            
     });
     // it("Select Time Start Promotion", () => {
@@ -65,7 +65,7 @@ describe("Create Promotion", () => {
     // });
     it("Add Promotion", () => {
       
-        cy.get('.sc-jlyJG').click({force : true})
+        cy.get('.sc-bRBYWo').click({force : true})
         cy.get(':nth-child(1) > input').click()
     });
     it("Submit", () => {
